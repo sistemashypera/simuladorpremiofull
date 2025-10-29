@@ -142,15 +142,12 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
-        /* =================================== */
-        /* === DESTAQUE PARA "CATEGORIA" === */
-        /* =================================== */
         #categoria {
-            padding: 14px; /* Maior */
-            font-size: 17px; /* Maior */
+            padding: 14px;
+            font-size: 17px;
             font-weight: 700;
             border: 2px solid white;
-            animation: glow 2.5s infinite ease-in-out; /* Animação de brilho */
+            animation: glow 2.5s infinite ease-in-out;
         }
 
         @keyframes glow {
@@ -622,42 +619,72 @@
             senior: { salario: 11300.00, premio100: 4520.00, premioMaximo: 6780.00, focos: [ { peso: 0.20, paga: 904.00 }, { peso: 0.12, paga: 542.40 }, { peso: 0.08, paga: 361.60 }, { peso: 0.20, paga: 904.00 }, { peso: 0.30, paga: 1356.00 }, { peso: 0.10, paga: 452.00 } ] }
         };
         let categoriaAtual = categorias.inicial;
+        
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.classList.add('show');
             setTimeout(() => { toast.classList.remove('show'); }, 3000);
         }
-        async function downloadImage() {
+
+        // Função Genérica para Captura de Imagem (usada por Download e Copiar)
+        async function captureHighQualityImage() {
+            const captureArea = document.getElementById('captureArea');
+            const originalMaxWidth = captureArea.style.maxWidth;
+            const originalWidth = captureArea.style.width;
+
             try {
-                const canvas = await html2canvas(document.getElementById('captureArea'), { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' });
-                const link = document.createElement('a');
-                link.download = 'simulador-premiacao.png';
-                link.href = canvas.toDataURL();
-                link.click();
-                showToast('✅ Imagem baixada com sucesso!');
-            } catch (error) {
-                showToast('❌ Erro ao baixar imagem');
-                console.error(error);
-            }
-        }
-        async function copyImage() {
-            try {
-                const canvas = await html2canvas(document.getElementById('captureArea'), { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff' });
-                canvas.toBlob(async (blob) => {
-                    try {
-                        await navigator.clipboard.write([ new ClipboardItem({ 'image/png': blob }) ]);
-                        showToast('✅ Imagem copiada!');
-                    } catch (err) {
-                        showToast('❌ Erro ao copiar imagem');
-                        console.error(err);
-                    }
+                // 1. Prepara a área para uma captura de alta qualidade em formato A4/retrato
+                captureArea.style.maxWidth = 'none';
+                captureArea.style.width = '900px';
+
+                // 2. Tira a "foto" com alta resolução
+                const canvas = await html2canvas(captureArea, {
+                    scale: 3, // Qualidade 3x para texto nítido
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: '#ffffff'
                 });
+                return canvas;
+
             } catch (error) {
+                console.error("Erro ao capturar imagem:", error);
                 showToast('❌ Erro ao processar imagem');
-                console.error(error);
+                return null;
+            } finally {
+                // 3. Restaura o layout original da página, aconteça o que acontecer
+                captureArea.style.maxWidth = originalMaxWidth;
+                captureArea.style.width = originalWidth;
             }
         }
+
+        async function downloadImage() {
+            const canvas = await captureHighQualityImage();
+            if (!canvas) return;
+
+            const link = document.createElement('a');
+            link.download = 'simulador-premiacao-hypera.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            
+            showToast('✅ Imagem baixada com sucesso!');
+        }
+        
+        async function copyImage() {
+            const canvas = await captureHighQualityImage();
+            if (!canvas) return;
+
+            canvas.toBlob(async (blob) => {
+                try {
+                    await navigator.clipboard.write([ new ClipboardItem({ 'image/png': blob }) ]);
+                    showToast('✅ Imagem copiada!');
+                } catch (err) {
+                    showToast('❌ Erro ao copiar imagem');
+                    console.error(err);
+                }
+            });
+        }
+
         function atualizarCategoria() {
             const select = document.getElementById('categoria');
             categoriaAtual = categorias[select.value];
