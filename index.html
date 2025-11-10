@@ -237,8 +237,8 @@
         .foco2 { background-color: #FFF3E0; }
         .foco3 { background-color: #F3E5F5; }
         .lancamentos { background-color: #FFF9C4; }
-        .ultima-rep { background-color: #E1F5FE; }
-        .ultima-gd { background-color: #F1F8E9; }
+        .demais-produtos { background-color: #E1F5FE; }
+        .total-gd { background-color: #F1F8E9; }
         
         .performance-indicator {
             display: inline-block;
@@ -425,12 +425,12 @@
                 font-size: 18px;
             }
             
-            td[data-label="VENDA REAL (BI)"] {
+            td[data-label="COB PROJ ARRED POWER BI"] {
                 display: block;
                 padding: 12px 15px;
             }
 
-            td[data-label="VENDA REAL (BI)"]::before {
+            td[data-label="COB PROJ ARRED POWER BI"]::before {
                 display: block;
                 margin-bottom: 8px;
                 font-size: 14px;
@@ -510,7 +510,7 @@
                         <th>FOCO</th>
                         <th>PESO</th>
                         <th>PAGA</th>
-                        <th>VENDA REAL POWER BI</th>
+                        <th>COB PROJ ARRED POWER BI</th>
                         <th>TABELA DE CONVERSÃO</th>
                         <th>PESO X CONVERSÃO</th>
                         <th>PROJETADO A RECEBER</th>
@@ -521,7 +521,7 @@
                         <td data-label="FOCO"><strong>FOCO 1</strong></td>
                         <td data-label="PESO">20%</td>
                         <td data-label="PAGA" class="paga">R$ 570,00</td>
-                        <td data-label="VENDA REAL (BI)"><input type="number" step="0.01" value="0.00" data-row="0" min="0" max="200"></td>
+                        <td data-label="COB PROJ ARRED POWER BI"><input type="number" step="0.01" value="0.00" data-row="0" min="0" max="200"></td>
                         <td data-label="CONVERSÃO" class="conversao">0,00%</td>
                         <td data-label="PESO X CONV." class="peso-conversao">0,00%</td>
                         <td data-label="A RECEBER" class="projetado">R$ 0,00</td>
@@ -530,7 +530,7 @@
                         <td data-label="FOCO"><strong>FOCO 2</strong></td>
                         <td data-label="PESO">12%</td>
                         <td data-label="PAGA" class="paga">R$ 342,00</td>
-                        <td data-label="VENDA REAL (BI)"><input type="number" step="0.01" value="0.00" data-row="1" min="0" max="200"></td>
+                        <td data-label="COB PROJ ARRED POWER BI"><input type="number" step="0.01" value="0.00" data-row="1" min="0" max="200"></td>
                         <td data-label="CONVERSÃO" class="conversao">0,00%</td>
                         <td data-label="PESO X CONV." class="peso-conversao">0,00%</td>
                         <td data-label="A RECEBER" class="projetado">R$ 0,00</td>
@@ -539,7 +539,7 @@
                         <td data-label="FOCO"><strong>FOCO 3</strong></td>
                         <td data-label="PESO">8%</td>
                         <td data-label="PAGA" class="paga">R$ 228,00</td>
-                        <td data-label="VENDA REAL (BI)"><input type="number" step="0.01" value="0.00" data-row="2" min="0" max="200"></td>
+                        <td data-label="COB PROJ ARRED POWER BI"><input type="number" step="0.01" value="0.00" data-row="2" min="0" max="200"></td>
                         <td data-label="CONVERSÃO" class="conversao">0,00%</td>
                         <td data-label="PESO X CONV." class="peso-conversao">0,00%</td>
                         <td data-label="A RECEBER" class="projetado">R$ 0,00</td>
@@ -548,25 +548,25 @@
                         <td data-label="FOCO"><strong>LANÇAMENTOS</strong></td>
                         <td data-label="PESO">20%</td>
                         <td data-label="PAGA" class="paga">R$ 570,00</td>
-                        <td data-label="VENDA REAL (BI)"><input type="number" step="0.01" value="0.00" data-row="3" min="0" max="200"></td>
+                        <td data-label="COB PROJ ARRED POWER BI"><input type="number" step="0.01" value="0.00" data-row="3" min="0" max="200"></td>
                         <td data-label="CONVERSÃO" class="conversao">0,00%</td>
                         <td data-label="PESO X CONV." class="peso-conversao">0,00%</td>
                         <td data-label="A RECEBER" class="projetado">R$ 0,00</td>
                     </tr>
-                    <tr class="ultima-rep">
-                        <td data-label="FOCO"><strong>ÚLTIMA LINHA REP</strong></td>
+                    <tr class="demais-produtos">
+                        <td data-label="FOCO"><strong>DEMAIS PRODUTOS</strong></td>
                         <td data-label="PESO">30%</td>
                         <td data-label="PAGA" class="paga">R$ 855,00</td>
-                        <td data-label="VENDA REAL (BI)"><input type="number" step="0.01" value="0.00" data-row="4" min="0" max="200"></td>
+                        <td data-label="COB PROJ ARRED POWER BI"><input type="number" step="0.01" value="0.00" data-row="4" min="0" max="200"></td>
                         <td data-label="CONVERSÃO" class="conversao">0,00%</td>
                         <td data-label="PESO X CONV." class="peso-conversao">0,00%</td>
                         <td data-label="A RECEBER" class="projetado">R$ 0,00</td>
                     </tr>
-                    <tr class="ultima-gd">
-                        <td data-label="FOCO"><strong>ÚLTIMA LINHA GD</strong></td>
+                    <tr class="total-gd">
+                        <td data-label="FOCO"><strong>TOTAL GD</strong></td>
                         <td data-label="PESO">10%</td>
                         <td data-label="PAGA" class="paga">R$ 285,00</td>
-                        <td data-label="VENDA REAL (BI)"><input type="number" step="0.01" value="0.00" data-row="5" min="0" max="200"></td>
+                        <td data-label="COB PROJ ARRED POWER BI"><input type="number" step="0.01" value="0.00" data-row="5" min="0" max="200"></td>
                         <td data-label="CONVERSÃO" class="conversao">0,00%</td>
                         <td data-label="PESO X CONV." class="peso-conversao">0,00%</td>
                         <td data-label="A RECEBER" class="projetado">R$ 0,00</td>
@@ -715,7 +715,7 @@
         function calcular() {
             const inputs = document.querySelectorAll('input[type="number"]');
             let somaProjetado = 0, somaPesoConversao = 0;
-            const feedbackData = [], focoNomes = ['FOCO 1', 'FOCO 2', 'FOCO 3', 'LANÇAMENTOS', 'ÚLTIMA LINHA REP', 'ÚLTIMA LINHA GD'];
+            const feedbackData = [], focoNomes = ['FOCO 1', 'FOCO 2', 'FOCO 3', 'LANÇAMENTOS', 'DEMAIS PRODUTOS', 'TOTAL GD'];
             inputs.forEach((input, index) => {
                 const vendaReal = parseFloat(input.value) || 0;
                 const conversao = calcularConversao(vendaReal);
@@ -766,4 +766,5 @@
     </script>
 </body>
 </html>
+
 
